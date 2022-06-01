@@ -1,16 +1,34 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div id="app">
+    <button v-for="(tab, i) in tabs" :key="i" @click="currentTab = tab">{{ tab.name }}</button>
+
+    <Component1 v-if="test === 'test1'"/>
+    <Component2 v-if="test === 'test2'"/>
+    <component :is="currentTab"></component>
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Component1 from './components/Component1.vue'
+import Component2 from './components/Component2.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
-  }
+    Component1,
+    Component2,
+  },
+  data() {
+    return {
+      test: '',
+      currentTab: Component1,
+      tabs: {
+        Component1,
+        Component2,
+      },
+    };
+  },
+
 }
 </script>
 
