@@ -1,10 +1,11 @@
 <template>
   <div id="app">
-    <button v-for="(tab, i) in tabs" :key="i" @click="currentTab = tab">{{ tab.name }}</button>
+
+    <button @click="test = 'test1'">Overview</button>
+    <button @click="test = 'test2'">Eventview</button>
 
     <Component1 v-if="test === 'test1'"/>
     <Component2 v-if="test === 'test2'"/>
-    <component :is="currentTab"></component>
   </div>
 </template>
 
